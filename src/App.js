@@ -28,29 +28,30 @@ function App() {
     setLoading(true)
     var group1 = []
     var group2 = []
+    var group3 = []
     var arrGroup1 = []
     var arrGroup2 = []
-    if (state['checkedThanhDat'] === true) group1.push('Thành Đạt')
-    if (state['checkedQuangDat'] === true) group1.push('Quang Đạt')
+    if (state['checkedThanhDat'] === true) group2.push('Thành Đạt')
+    if (state['checkedQuangDat'] === true) group2.push('Quang Đạt')
     if (state['checkedToan'] === true) group1.push('Dương Toản')
     if (state['checkedTung'] === true) group1.push('Tùng')
-    if (state['checkedHao'] === true) group1.push('Hào')
-    if (state['checkedMinh'] === true) group1.push('Minh')
-    if (state['checkedDu'] === true) group1.push('Dự')
-    if (state['checkedSon'] === true) group1.push('Sơn')
-    if (state['checkedHa'] === true) group1.push('Hà')
-    if (state['checkedDo'] === true) group1.push('Độ')
+    if (state['checkedHao'] === true) group2.push('Hào')
+    if (state['checkedMinh'] === true) group2.push('Minh')
+    if (state['checkedDu'] === true) group2.push('Dự')
+    if (state['checkedSon'] === true) group2.push('Sơn')
+    if (state['checkedHa'] === true) group2.push('Hà')
+    if (state['checkedDo'] === true) group2.push('Độ')
 
-    if (state['checkedViet'] === true) group2.push('Việt')
-    if (state['checkedVietVo'] === true) group2.push('Việt võ')
-    if (state['checkedHung'] === true) group2.push('Hùng')
-    if (state['checkedVu'] === true) group2.push('Vũ')
-    if (state['checkedThuc'] === true) group2.push('Thực')
-    if (state['checkedThang'] === true) group2.push('Thắng')
-    if (state['checkedDuc'] === true) group2.push('Đức')
-    if (state['checkedBan1'] === true) group2.push('Bạn 1')
-    if (state['checkedBan2'] === true) group2.push('Bạn 2')
-    if (state['checkedBan3'] === true) group2.push('Bạn 3')
+    if (state['checkedViet'] === true) group3.push('Việt')
+    if (state['checkedVietVo'] === true) group3.push('Việt võ')
+    if (state['checkedHung'] === true) group3.push('Hùng')
+    if (state['checkedVu'] === true) group3.push('Vũ')
+    if (state['checkedThuc'] === true) group3.push('Thực')
+    if (state['checkedThang'] === true) group3.push('Thắng')
+    if (state['checkedDuc'] === true) group3.push('Đức')
+    if (state['checkedBan1'] === true) group3.push('Bạn 1')
+    if (state['checkedBan2'] === true) group3.push('Bạn 2')
+    if (state['checkedBan3'] === true) group3.push('Bạn 3')
 
     var index = 1
     while (group1.length !== 0) {
@@ -67,7 +68,6 @@ function App() {
     }
 
     while (group2.length !== 0) {
-
       const rand = group2[Math.floor(Math.random() * group2.length)];
       if (index === 1) {
         arrGroup1.push(rand)
@@ -78,6 +78,19 @@ function App() {
       }
       const vitri = group2.indexOf(rand)
       group2.splice(vitri, 1)
+    }
+
+    while (group3.length !== 0) {
+      const rand = group3[Math.floor(Math.random() * group3.length)];
+      if (index === 1) {
+        arrGroup1.push(rand)
+        index = 2
+      } else {
+        arrGroup2.push(rand)
+        index = 1
+      }
+      const vitri = group3.indexOf(rand)
+      group3.splice(vitri, 1)
     }
 
     setDoi1(arrGroup1)
@@ -116,14 +129,17 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Random đội CNPM16 - MTA</h2>
       <div className='chiaNhom'>
         <div className={classes.root}>
           <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                <h2>Random đội CNPM16 - MTA</h2>
+              </Paper>
+            </Grid>
             <Grid item xs={6}>
               <Paper className={classes.paper}>
                 <div>
-                  <h3>Nhóm 1</h3>
                   <div className='listNguoi'>
                     <div className='nguoi'>
                       <Switch
@@ -222,7 +238,6 @@ function App() {
             <Grid item xs={6}>
               <Paper className={classes.paper}>
                 <div>
-                  <h3>Nhóm 2</h3>
                   <div className='listNguoi'>
                     <div className='nguoi'>
                       <Switch
